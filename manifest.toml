@@ -5,7 +5,7 @@ name = "Mastodon"
 description.en = "Libre and federated social network"
 description.fr = "Réseau social libre et fédéré"
 
-version = "4.5.11~ynh1"
+version = "2026.06.25~ynh1"
 
 maintainers = []
 
@@ -49,12 +49,50 @@ ram.runtime = "500M"
     [install.admin]
     type = "user"
 
+    [install.mastosource]
+    ask.en = "Choose which version of Mastodon"
+    type = "select"
+    choices.mastodonmain = "Vanilla Mastodon unstable"
+    choices.mastodonstable = "Vanilla Mastodon stable"
+    choices.glitchsocmain = "Glitch-soc unstable"
+    choices.glitchsocstable = "Glitch-soc stable"
+    choices.0s = "zeroes.ca stable"
+    choices.mementomorimods = "mementomori.social mods 2026-06-19"
+
 [resources]
+
     [resources.sources]
-        [resources.sources.main]
-        url = "https://github.com/mastodon/mastodon/archive/refs/tags/v4.5.11.tar.gz"
-        sha256 = "60ee3df6173df9bcdd8b4b6d9c2bb7ea34fb85c935d0c6ccb02880de5d586ce8"
-        autoupdate.strategy = "latest_github_release"
+
+        [resources.sources.mastodonmain]
+        url = "https://github.com/mastodon/mastodon/archive/19b7325c8ea4c37d4c26fe069ecbeb871a11debc.tar.gz"
+        sha256 = "5645d5e328bc86d648933dd882d3d6e1a9421dfbe62104e71ac10164d76d7966"
+        prefetch = false
+
+        [resources.sources.mastodonstable]
+        url = "https://github.com/mastodon/mastodon/archive/refs/tags/v4.6.1.tar.gz"
+        sha256 = "0531f26d5555841550f85bce2cf8a55e9690b35a1aca5e1bfdebe253b68c4b78"
+        #autoupdate.strategy = "latest_github_release"
+        prefetch = false
+
+        [resources.sources.glitchsocmain]
+        url = "https://github.com/glitch-soc/mastodon/archive/c792d07698a5ff684587efc12bd5b30c75e6264b.tar.gz"
+        sha256 = "96cfc020edcd9c5f86ef35e2ac0852f5d9600c6c19fc8abcdbb4c0d56732535b"
+        prefetch = false
+
+        [resources.sources.glitchsocstable]
+        url = "https://github.com/glitch-soc/mastodon/archive/refs/tags/v4.6.1.tar.gz"
+        sha256 = "a051b46c6b24e4ee428e2430f79840f5fc15b481bb796822139f43733eb76517"
+        prefetch = false
+
+        [resources.sources.0s]
+        url = "https://github.com/zeroesca/glitchsoc/archive/a0eb0f7aaca63ef7b360056e493239c5160105b5.tar.gz"
+        sha256 = "2b7f5a74293c6121f3c1fbcc36358545678311c348ef6fbaebc162bd50178412"
+        prefetch = false
+
+        [resources.sources.mementomorimods]
+        url = "https://github.com/mementomori-social/mastodon/archive/71df4d4695aa13c320660aae96198e1634795234.tar.gz"
+        sha256 = "eeabd3aac133fc4283c1c3571b5847b27cb55c4fcdb0bba35300ee27404543bc"
+        prefetch = false
 
         [resources.sources.redis_migration]
         url = "https://raw.githubusercontent.com/mastodon/redis_namespace_migration/47c6bd9757e7a40f7091b5692d78aef992ea8bf2/rename.rb"
@@ -67,7 +105,6 @@ ram.runtime = "500M"
     allow_email = true
 
     [resources.install_dir]
-    group = "www-data:r-x"
     
     [resources.permissions]
     main.url = "/"
@@ -83,7 +120,7 @@ ram.runtime = "500M"
     stream.default = 4000
 
     [resources.apt]
-    packages = "imagemagick, ffmpeg, libvips-tools, libpq-dev, libxml2-dev, libxslt1-dev, file, git, git-core, g++, libprotobuf-dev, protobuf-compiler, pkg-config, gcc, autoconf, bison, build-essential, libssl-dev, libyaml-dev, libreadline6-dev, zlib1g-dev, libncurses5-dev, libffi-dev, libgdbm6, libgdbm-dev, redis-tools, redis-server, rsync, postgresql, postgresql-contrib, libidn11-dev, libicu-dev, libjemalloc-dev, curl, apt-transport-https"
+    packages = "ffmpeg, libvips-tools, libpq-dev, libxml2-dev, libxslt1-dev, file, git, git-core, g++, libprotobuf-dev, protobuf-compiler, pkg-config, gcc, autoconf, bison, build-essential, libssl-dev, libyaml-dev, libreadline6-dev, zlib1g-dev, libncurses5-dev, libffi-dev, libgdbm6, libgdbm-dev, redis-tools, redis-server, rsync, postgresql, postgresql-contrib, libidn11-dev, libicu-dev, libjemalloc-dev, curl, apt-transport-https"
 
     [resources.database]
     type = "postgresql"
