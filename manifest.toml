@@ -52,12 +52,13 @@ ram.runtime = "500M"
     [install.mastosource]
     ask.en = "Choose which version of Mastodon"
     type = "select"
-    choices.mastodonmain = "Vanilla Mastodon unstable"
-    choices.mastodonstable = "Vanilla Mastodon stable"
+    choices.mastodonmain = "vanilla Mastodon unstable"
+    choices.mastodonstable = "vanilla Mastodon stable"
     choices.glitchsocmain = "Glitch-soc unstable"
     choices.glitchsocstable = "Glitch-soc stable"
-    choices.0s = "zeroes.ca stable"
-    choices.mementomorimods = "mementomori.social mods 2026-06-19"
+    choices.0s = "Zeroes.ca stable"
+    choices.mementomorimods = "Mementomori.social mods"
+    choices.chuckya = "Chuckya"
 
 [resources]
 
@@ -92,6 +93,11 @@ ram.runtime = "500M"
         [resources.sources.mementomorimods]
         url = "https://github.com/mementomori-social/mastodon/archive/71df4d4695aa13c320660aae96198e1634795234.tar.gz"
         sha256 = "eeabd3aac133fc4283c1c3571b5847b27cb55c4fcdb0bba35300ee27404543bc"
+        prefetch = false
+
+        [resources.sources.chuckya]
+        url = "https://github.com/TheEssem/mastodon/archive/176c2115d0aa89a570666c56937c5b5702f5a2c3.tar.gz"
+        sha256 = "d63c99d9a2827d2bae40aea65747235579f5bd5412335dc73d524b889caa6d84"
         prefetch = false
 
         [resources.sources.redis_migration]
